@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit movie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<h1>Edit Movie</h1>
+	<div>
+		<form th:object="${movie}" th:action="@{../save}" action="#"
+			method="post">
+			<label for="id"></label> <input type="hidden" th:field="*{id}"
+				class="form-control" /> <label for="name">Name</label> <input
+				type="text" id="fname" th:field="*{name}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('name')}"
+				th:errors="*{name}">Name Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="director">Director</label> <input type="text" id="author"
+				th:field="*{director}" />
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('director')}" th:errors="*{director}">Director
+				Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="language">Language</label> <input type="text"
+				th:field="*{language}" />
+			<div class="alert alert-warning"
+				th:if="${#fields.hasErrors('language')}" th:errors="*{language}">Language
+				Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="time">Time</label> <input type="text" th:field="*{time}" />
+			<div class="alert alert-warning" th:if="${#fields.hasErrors('time')}"
+				th:errors="*{time}">Time Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="subtitles">Subtitles</label> <input type="text"
+				th:field="*{subtitles}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="category">Category</label>
+			<select id="category" th:field="*{category}" >
+				<option th:each="category: ${categories}"
+					th:value="${category.categoryid}" th:text="${category.cname}"></option>
+			</select>
+			<label for="country">Country</label>
+			<select id="country" th:field="*{country}" >
+				<option th:each="country: ${countries}"
+					th:value="${country.countryid}" th:text="${country.countryname}"></option>
+			</select>
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<input type="submit" class="btn btn-success" value="Save"></input> 
+			  <a class="btn btn-danger" href="/movielist">Cancel <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+</svg></a>
+		</form>
+	</div>
+</body>
+</html>
